@@ -1,0 +1,22 @@
+.container-output {
+  /* background-color: rgb(221, 221, 221); */
+
+  padding-top: 100px;
+  /* width: 100vw; */
+  /* height: 80vh; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-output {
+  padding: 30px;
+  /* width: 100px;
+  height: 60px; */
+  /* margin-top: 40px; */
+  background-color: white;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 4px 4px 8px rgb(126, 126, 126);
+  font-size: 25px;
+}
