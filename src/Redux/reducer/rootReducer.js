@@ -19,10 +19,16 @@ const rootReducer = (state = globalState, action) => {
       randomNumber: 0,
     };
   }
-  if (action.type === "BUbBLE_ARR") {
+  if (action.type === ActionType.BUBBLE_ARR) {
     return {
       ...state,
       arrayNumber: action.bubbleArr,
+    };
+  }
+  if (action.type === ActionType.RESET_STATE) {
+    return {
+      randomNumber: 0,
+      arrayNumber: [],
     };
   }
   return state;

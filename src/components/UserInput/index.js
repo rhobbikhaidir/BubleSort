@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./index.css";
+import ActionType from "../../Redux/reducer/actionType";
 
 const mapStateToProps = (state) => {
   console.log(state);
@@ -15,11 +16,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleChangeNumber: (kosong) =>
-      dispatch({ type: "CHANGE_NUMBER", newNumber: kosong }),
+      dispatch({ type: ActionType.CHANGE_NUMBER, newNumber: kosong }),
     handleGenerate: (arr) =>
-      dispatch({ type: "GENERATE_NUMBER", newArray: arr }),
+      dispatch({ type: ActionType.GENERATE_NUMBER, newArray: arr }),
     handleBubbleArr: (newBubbleArr) =>
-      dispatch({ type: "BUBBLE_ARR", bubbleArr: newBubbleArr }),
+      dispatch({ type: ActionType.BUBBLE_ARR, bubbleArr: newBubbleArr }),
   };
 };
 
@@ -46,17 +47,18 @@ const UserInput = (props) => {
   };
 
   const handleBubleSort = () => {
-    const arr = props.arrayNumber;
     let i, j;
     const len = props.arrayNumber.length;
 
     for (i = 0; i < len; i++) {
+      let arr = props.arrayNumber;
+
       for (j = 0; j < len; j++) {
         if (arr[j] > arr[j + 1]) {
-          let bubleArr = arr[j];
+          let newBubleArr = arr[j];
           arr[j] = arr[j + 1];
-          arr[j + 1] = bubleArr;
-          props.handleBubbleArr(bubleArr);
+          arr[j + 1] = newBubleArr;
+          props.handleBubbleArr(arr);
         }
       }
     }
@@ -73,10 +75,11 @@ const UserInput = (props) => {
       <div className="form-user-input-post">
         <label htmlFor="title">Add length number of array</label>
         <div className="arrayNumber">
-          {props.arrayNumber &&
-            props.arrayNumber.map((data, index) => {
-              return <p key={index}>{data}</p>;
-            })}
+          {props.arrayNumber.length > 1
+            ? props.arrayNumber.map((data, index) => {
+                return <p key={index}>{data}</p>;
+              })
+            : ""}
         </div>
         <input
           type="number"

@@ -1,6 +1,8 @@
 const ActionType = {
   CHANGE_NUMBER: "CHANGE_NUMBER",
   GENERATE_NUMBER: "GENERATE_NUMBER",
+  BUBBLE_ARR: "BUBBLE_ARR",
+  RESET_STATE: "RESER_STATE",
 };
 
 export default ActionType;
