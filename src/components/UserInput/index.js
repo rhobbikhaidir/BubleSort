@@ -50,12 +50,13 @@ const UserInput = (props) => {
     let i, j;
     const len = props.arrayNumber.length;
 
+    let arr = props.arrayNumber;
     for (i = 0; i < len; i++) {
-      let arr = props.arrayNumber;
-
       for (j = 0; j < len; j++) {
         if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
           arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
           props.handleBubbleArr(arr);
         }
       }
